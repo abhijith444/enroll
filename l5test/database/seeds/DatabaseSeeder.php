@@ -74,13 +74,6 @@ class CourseSeeder extends Seeder {
         	'course_type' => "Track",
         	'description' => "This is a Track Course",
         	]);
-
-        Course::create([
-            'course_code' => 5656,
-            'course_name' => "Android",
-            'course_type' => "Track",
-            'description' => "This is a core Course",
-            ]);
     }
 
 }
@@ -97,7 +90,7 @@ class SectionSeeder extends Seeder {
             'instructor'=>"Kamal",
         	'time' => "1:00 pm - 4:00 pm",
             'days' => "M",
-            'time_code' => 2,
+            'time_code' => 1,
         	'capacity' => 30,
         	'description' => "Course 1 Section",
             'location'=>'Warrensburg',
@@ -108,7 +101,7 @@ class SectionSeeder extends Seeder {
             'instructor'=>"Faja",
         	'time' => "1:00 pm - 4:00 pm",
         	'days' => "T",
-            'time_code' => 2,
+            'time_code' => 1,
         	'capacity' => 30,
         	'description' => "Course 1 Section",
             'location'=>'Warrensburg',
@@ -119,7 +112,7 @@ class SectionSeeder extends Seeder {
             'instructor'=>"Narsimham",
         	'time' => "1:00 pm - 4:00 pm",
         	'days' => "W",
-            'time_code' => 2,
+            'time_code' => 1,
         	'capacity' => 30,
         	'description' => "Course 1 Section",
             'location'=>'Warrensburg',
@@ -131,7 +124,7 @@ class SectionSeeder extends Seeder {
             'instructor'=>"Sam",
         	'time' => "1:00 pm - 4:00 pm",
         	'days' => "W",
-            'time_code' => 2,
+            'time_code' => 1,
         	'capacity' => 30,
         	'description' => "Course 2 Section",
             'location'=>'Warrensburg',
@@ -142,7 +135,7 @@ class SectionSeeder extends Seeder {
             'instructor'=>"Blake",
         	'time' => "6:00 pm - 9:00 pm",
         	'days' => "F",
-            'time_code' => 3,
+            'time_code' => 1,
         	'capacity' => 30,
         	'description' => "Course 2 Section",
             'location'=>'Warrensburg',
@@ -158,39 +151,6 @@ class SectionSeeder extends Seeder {
         	'description' => "Course 2 Section",
             'location'=>'Warrensburg',
         	]);
-        Section::create([
-            'crn' => 231231,
-            'course_id' => 2,
-            'instructor'=>"Abhijith",
-            'time' => "9:00 am - 11:00 am",
-            'days' => "M",
-            'time_code' => 1,
-            'capacity' => 30,
-            'description' => "Course 2 Section",
-            'location'=>'Warrensburg',
-            ]);
-        Section::create([
-            'crn' => 543235,
-            'course_id' => 2,
-            'instructor'=>"Abhijith",
-            'time' => "9:00 am - 11:00 am",
-            'days' => "T",
-            'time_code' => 1,
-            'capacity' => 30,
-            'description' => "Course 2 Section",
-            'location'=>'Warrensburg',
-            ]);
-        Section::create([
-            'crn' => 876534,
-            'course_id' => 2,
-            'instructor'=>"Abhijith",
-            'time' => "9:00 am - 11:00 am",
-            'days' => "W",
-            'time_code' => 1,
-            'capacity' => 30,
-            'description' => "Course 2 Section",
-            'location'=>'Warrensburg',
-            ]);
     }
 }
 
