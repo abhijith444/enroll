@@ -160,7 +160,7 @@ class SectionSeeder extends Seeder {
         	]);
         Section::create([
             'crn' => 231231,
-            'course_id' => 2,
+            'course_id' => 3,
             'instructor'=>"Abhijith",
             'time' => "9:00 am - 11:00 am",
             'days' => "M",
@@ -171,7 +171,7 @@ class SectionSeeder extends Seeder {
             ]);
         Section::create([
             'crn' => 543235,
-            'course_id' => 2,
+            'course_id' => 3,
             'instructor'=>"Abhijith",
             'time' => "9:00 am - 11:00 am",
             'days' => "T",
@@ -182,7 +182,7 @@ class SectionSeeder extends Seeder {
             ]);
         Section::create([
             'crn' => 876534,
-            'course_id' => 2,
+            'course_id' => 3,
             'instructor'=>"Abhijith",
             'time' => "9:00 am - 11:00 am",
             'days' => "W",
