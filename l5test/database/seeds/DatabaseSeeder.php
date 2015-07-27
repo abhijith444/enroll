@@ -119,40 +119,6 @@ class SectionSeeder extends Seeder {
         	]);
 
         Section::create([
-        	'crn' => 415263,
-        	'course_id' => 2,
-            'instructor'=>"Sam",
-        	'time' => "1:00 pm - 4:00 pm",
-        	'days' => "W",
-            'time_code' => 1,
-        	'capacity' => 30,
-        	'description' => "Course 2 Section",
-            'location'=>'Warrensburg',
-        	]);
-        Section::create([
-        	'crn' => 458741,
-        	'course_id' => 2,
-            'instructor'=>"Blake",
-        	'time' => "6:00 pm - 9:00 pm",
-        	'days' => "F",
-            'time_code' => 1,
-        	'capacity' => 30,
-        	'description' => "Course 2 Section",
-            'location'=>'Warrensburg',
-        	]);
-        Section::create([
-        	'crn' => 968574,
-        	'course_id' => 2,
-            'instructor'=>"Prasad",
-        	'time' => "9:00 am - 11:00 am",
-        	'days' => "S",
-            'time_code' => 1,
-        	'capacity' => 30,
-        	'description' => "Course 2 Section",
-            'location'=>'Warrensburg',
-        	]);
-<<<<<<< HEAD
-        Section::create([
             'crn' => 231231,
             'course_id' => 3,
             'instructor'=>"Abhijith",
@@ -185,8 +151,6 @@ class SectionSeeder extends Seeder {
             'description' => "Course 2 Section",
             'location'=>'Warrensburg',
             ]);
-=======
->>>>>>> e458413606684aa1d1b5b8461ad5ef987be59ca2
     }
 }
 
