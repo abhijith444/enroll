@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ng-controller="SectionsController as ctrl">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/jquery.min.js"></script>
+	<script src="lib/angular.min.js"></script>
+
+	
+</head>
+<body>
+	{{ctrl.hello}}
+	<ul>
+		<li ng-repeat="section in items">
+			{{section}}
+		</li>
+	</ul>
+
+	<ul>
+		<li ng-repeat="section in ctrl.sections">
+			{{section}}
+		</li>
+	</ul>
+
+
+	<script>
+
+	// $( ".enModal" ).load( "../l5test/public/test", function(response, status, xhr) {
+	// 	alert( status + " " +xhr.statusText );
+	// });
+
+var app = angular.module("myApp",[]);
+var mysections = [];
+app.controller("SectionsController",function($http,$scope,$rootScope){
+	$scope.test = "Test";
+	this.hello = "Hello";
+	var qw = "Abhi";
+	var sectionData="Man";
+
+	$http.get("../l5test/public/test")
+	.success(function(data) { testf(data);console.log(qw);});
+
+		// this.sections = $rootScope.sections;//["Sam 1","Sam 2"];
+		console.log($rootScope.sections);
+
+		var testf = function (data) {
+			console.log(qw);
+			qw = "Hello";
+
+			return data;
+		}
+
+	});
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ng-controller="SectionsController as ctrl">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="lib/bootstrap.min.css" />
+	<link rel="stylesheet" href="bower_components/ladda/dist/ladda-themeless.min.css">
+	<script src="lib/jquery.min.js"></script>
+	<script src="lib/angular.min.js"></script>
+	<script src="lib/bootstrap.min.js"></script>
+	<script src="bower_components/ladda/dist/spin.min.js"></script>
+	<script src="bower_components/ladda/dist/ladda.min.js"></script>
+	<script src="bower_components/angular-ladda/dist/angular-ladda.min.js"></script>
+
+	
+</head>
+<body>
+	<a class="btn btn-danger" ladda="loginLoading" ng-click="login()" data-style="expand-up">
+		Login
+	</a>
+	
+	<ul>
+		<li ng-repeat="section in sections">
+			{{section}}
+		</li>
+	</ul>
+
+	<script>
+
+
+	var app = angular.module("myApp",['angular-ladda']);
+
+	
+	app.controller("SectionsController",function($http,$scope){
+		$scope.login = function() {
+    // start loading 
+    $scope.loginLoading = true;
+    $http.get("../l5test/public/test")
+    .success(function(data) { 
+    	$scope.sections = data.sections;
+    	$scope.loginLoading = false;
+    });
+
+}
+});
+
+
+
+
+
+	</script>
+</body>
+</html>
