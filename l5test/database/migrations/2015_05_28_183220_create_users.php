@@ -20,6 +20,7 @@ class CreateUsers extends Migration {
 			$table->string('email',40);
 			$table->string('password',60);
 			$table->string('email_ucm',40);
+			$table->string('facebook_url',40);
 			$table->timestamps();
 			$table->rememberToken();
 		});
