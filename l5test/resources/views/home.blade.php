@@ -6,24 +6,12 @@
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">Enrollment</div>
-				<div class="panel-body" ng-show="loading">This is a Spinner</div>
+
+				<div class="panel-body" ng-show="loading">Please wait ...</div>
 				<div class="panel-body" ng-hide="loading">
-					<!-- <div class="course-box">
-						<p class="text-center">
-							<a href="" data-toggle="modal" data-target="#myModal">
-								<span class="glyphicon glyphicon-plus"></span><br>
-								<button type="button" class="btn">Add Course</button>
-							</a>
-						</p>
-					</div>
-					<div class="course-box">
-						<p class="text-center">
-							Course : Name<br>
-							Time : Time<br>
-							Instructor : Instructor
-						</p>
-					</div> -->
-					<legend>Enrolled</legend>
+					<div class="alert alert-success" ng-show="hasMessage">@{{message}}</div>
+					<legend>Enrolled Section</legend>
+					
 					<table class="table table-striped">
 						<thead>
 							<th>Course Code</th>
@@ -120,6 +108,7 @@ app.controller("SectionsController",function($http,$scope){
 		$http.get("my").success(function(data) { 
 			$scope.enrolled_sections = data.enrolled_sections;
 			$scope.available_sections = data.available_sections;
+			
 			$scope.loading = false;
 		});
 
@@ -139,7 +128,8 @@ app.controller("SectionsController",function($http,$scope){
 		$scope.loginLoading = true;
 		$http.get("enroll?id="+id)
 		.success(function(data) { 
-    	// $scope.sections = data.sections;
+		$scope.message = data.message;
+		$scope.hasMessage = true;	
     	$scope.loginLoading = false;
     	$scope.load();
     	
@@ -149,8 +139,9 @@ app.controller("SectionsController",function($http,$scope){
 	$scope.drop = function(id) {
 		$scope.loginLoading = true;
 		$http.get("drop?id="+id)
-		.success(function(data) { 
-    	// $scope.sections = data.sections;
+		.success(function(data) {
+		$scope.message = data.message;
+		$scope.hasMessage = true;	
     	$scope.loginLoading = false;
     	$scope.load();
     	

@@ -15,7 +15,7 @@ class CreateSections extends Migration {
 		Schema::create('sections', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('crn');
+			$table->integer('crn')->unique();
 			$table->integer('course_id')->references('id')->on('courses');
 			$table->string('instructor');
 			$table->string('days'); //core, track, substitute, prereq
@@ -25,7 +25,7 @@ class CreateSections extends Migration {
 			$table->string('location');
 			$table->integer('capacity');
 			$table->integer('filled')->default(0);
-			$table->integer('wait_list')->default(0);
+			// $table->integer('wait_list')->default(0);
 			
 			$table->text('description');
 			$table->timestamps();

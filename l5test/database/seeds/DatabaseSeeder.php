@@ -64,7 +64,7 @@ class CourseSeeder extends Seeder {
         Course::create([
         	'course_code' => 5660,
         	'course_name' => "Legal",
-        	'course_type' => "Core",
+        	'course_type' => "Pre-Requisite",
         	'description' => "This is a core Course",
         	]);
 
@@ -189,15 +189,10 @@ class EnrollmentSeeder extends Seeder {
     {
         DB::table('enrollments')->delete();
 
-        Enrollment::create([
-            'student_id' => 1,
-            'section_id' => 3,
-            ]);
+        Enrollment::enroll(1,1);
+        Enrollment::enroll(1,4);
             
-        Enrollment::create([
-            'student_id' => 1,
-            'section_id' => 2,
-            ]);
+        
     }
 
 }

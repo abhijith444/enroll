@@ -7,7 +7,7 @@
 	<title>CIS Enroll</title>
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cosmo/bootstrap.min.css" rel="stylesheet">
+	{{-- <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cosmo/bootstrap.min.css" rel="stylesheet"> --}}
 	<link href="lib/animate.css" rel="stylesheet">
 	<link rel="stylesheet" href="bower_components/ladda/dist/ladda-themeless.min.css">
 	<style>
@@ -55,7 +55,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">Laravel</a>
+					<a class="navbar-brand" href="#">CIS Enrollment System</a>
 				</div>
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -74,6 +74,7 @@
 								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
 							</ul>
 						</li>
+						<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
 						@endif
 					</ul>
 				</div>

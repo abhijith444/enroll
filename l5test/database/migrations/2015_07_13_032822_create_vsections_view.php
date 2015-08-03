@@ -14,7 +14,7 @@ class CreateVsectionsView extends Migration {
 	{
 		$query = "CREATE VIEW vsections AS
 		SELECT s.id,s.crn,s.course_id,s.days,s.time,s.description,s.alias,s.instructor,s.location,concat(s.days,s.time_code) as time_flag,
-		c.course_code,c.course_name
+		c.course_code,c.course_name,c.course_type
 		FROM sections s 
 		JOIN courses c
 		ON s.course_id = c.id";

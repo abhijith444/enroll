@@ -12,6 +12,8 @@ use App\Vsection;
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::resource("courses","CourseController");
+Route::resource('courses.sections', 'SectionController');
 
 Route::get('/', 'Auth\AuthController@showLogin');
 Route::get('/ttt', 'TestController@index');

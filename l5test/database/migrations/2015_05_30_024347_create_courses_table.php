@@ -15,7 +15,7 @@ class CreateCoursesTable extends Migration {
 		Schema::create('courses', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('course_code');
+			$table->integer('course_code')->unique();
 			$table->string('course_name');
 			$table->string('course_type'); //core, track, substitute, prereq
 			// $table->string('semester');
