@@ -18,6 +18,7 @@ Route::resource('courses.sections', 'SectionController');
 Route::get('/', 'Auth\AuthController@showLogin');
 Route::get('/ttt', 'TestController@index');
 
+Route::get('allroll', 'AdminController@getAllEnrollments');
 Route::get('my', 'EnrollmentController@getData');
 Route::get('/ajdata', 'TestController@ajtest');
 

@@ -5,9 +5,11 @@ use App\User;
 use App\Vsection;
 use Auth;
 use Request;
-class EnrollmentController extends Controller {
+use DB;
 
-	public function enroll()
+class AdminController extends Controller {
+
+	public function menroll($student_ids,$sid)
 	{
 		$section_id = Request::input('id');
 		$user = Auth::user();
@@ -18,49 +20,22 @@ class EnrollmentController extends Controller {
 		return $k;
 		
 	}
-	public function drop()
+
+	public function getAllEnrollments()
 	{
-		$section_id = Request::input('id');
-		$user = Auth::user();
-		$e = Enrollment::where('student_id', '=', $user->id)
-						->where('section_id', '=', $section_id)
-						->delete();
-		
-		
-	}
-
-	public function getData()
-	{
-		$user = Auth::user();//User::find(1);
-		
-		$enrollments = Enrollment::where('student_id', '=', $user->id)->get();
-
-		$available_sections =$user->getAvailableSections(); //Vsection::All();
-
-		$enrolled_sections = Array();
-		foreach ($enrollments as $e) {
-			$enrolled_sections[] = Vsection::find($e->section_id);
-		}
-		$data = Array(
-			"success"=>"success",
-			"enrolled_sections"=>$enrolled_sections,
-			"available_sections"=>$available_sections
-			);
-
-		//echo $user->name;		
+		$enrollments = Enrollment::select('student_id', DB::raw('GROUP_CONCAT(section_id) AS section_ids'))
+           ->groupBy('student_id')->get()->toArray();
+        
 		// echo "<pre>";
-		// print_r($data);
 
-		// print_r(json_encode($data));
+		dd($enrollments);
+        // foreach ($enrollments as $enrollment) {
+        // 	$user=User::find($enrollment['student_id']);
+        // 	$section_array=explode(",",$enrollment['section_ids'])
+        // 	for($section_array as $sid)
+        // 		$sections[] = Vsection::find($sid);
 
-		//$data = json_encode($data);
-
-
-
-		return json_encode($data);
-
-
+        // }
 	}
 	
-
 }

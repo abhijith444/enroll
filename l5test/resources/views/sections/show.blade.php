@@ -1,34 +1,30 @@
-<!-- app/views/nerds/show.blade.php -->
+@extends('app-admin')
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Look! I'm CRUDding</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-</head>
-<body>
-<div class="container">
+@section('content')
+<div class="container well">
+    <h1>Showing Section: {{ $section->course_name }}({{ $section->crn }})</h1>
+    {!! Html::ul($errors->all()) !!}
+    <div class="text-center">
+        <legend>Mass Enroll</legend>
+        {!! Form::open(array('url' => 'menroll')) !!}
+        <div class="form-group">
+            {!! Form::label('student_ids', 'Enter the 700#s of students seperated commas') !!}
+            {!! Form::text('student_ids', Input::old('student_ids'), array('class' => 'form-control')) !!}
+            <button class="btn btn-info" type="submit">Mass Enroll</button>
+        </div>
+        {!! Form::close() !!}
 
-<nav class="navbar navbar-inverse">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="{{ URL::to('nerds') }}">Nerd Alert</a>
-    </div>
-    <ul class="nav navbar-nav">
-        <li><a href="{{ URL::to('nerds') }}">View All Nerds</a></li>
-        <li><a href="{{ URL::to('nerds/create') }}">Create a Nerd</a>
-    </ul>
-</nav>
-
-<h1>Showing {{ $nerd->name }}</h1>
-
-    <div class="jumbotron text-center">
-        <h2>{{ $nerd->name }}</h2>
-        <p>
-            <strong>Email:</strong> {{ $nerd->email }}<br>
-            <strong>Level:</strong> {{ $nerd->nerd_level }}
-        </p>
+        <legend>Mass Drop</legend>
+        {!! Form::open(array('url' => 'mdrop')) !!}
+        <div class="form-group">
+            {!! Form::label('student_ids', 'Enter the 700#s of students seperated commas') !!}
+            {!! Form::text('student_ids', Input::old('student_ids'), array('class' => 'form-control')) !!}
+            <button class="btn btn-danger" type="submit">Mass Drop</button>
+        </div>
+        {!! Form::close() !!}
     </div>
 
 </div>
-</body>
-</html> 
+@endsection
+
+@stop

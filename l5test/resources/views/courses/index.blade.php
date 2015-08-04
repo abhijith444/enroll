@@ -1,7 +1,7 @@
-@extends('app')
+@extends('app-admin')
 
 @section('content')
-<div class="container">
+<div class="well container">
     <h2>All the courses
     <a class="btn btn-info pull-right" href="{!! URL::to('courses/create') !!}" >Add Course</a>
     </h2>

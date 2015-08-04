@@ -1,7 +1,7 @@
-@extends('app')
+@extends('app-admin')
 
 @section('content')
-<div class="container">
+<div class="well container">
     <h1>Edit course</h1>
 
     <!-- if there are creation errors, they will show here -->

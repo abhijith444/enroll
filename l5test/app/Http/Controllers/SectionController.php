@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Section;
+use App\Vsection;
 use App\Course;
 use Validator;
 use Session;
@@ -73,7 +74,11 @@ class SectionController extends Controller {
 	 */
 	public function show($cid,$sid)
 	{
-		echo $cid." ".$sid;
+		//echo $cid." ".$sid;
+		$section = Vsection::find($sid);
+
+		return view('sections.show')->with('section',$section);
+
 	}
 
 	/**

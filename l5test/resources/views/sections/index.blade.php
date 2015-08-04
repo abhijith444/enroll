@@ -1,7 +1,7 @@
-@extends('app')
+@extends('app-admin')
 
 @section('content')
-<div class="container">
+<div class="container well">
     <h2>Course : {{$course->course_name}}
     <a class="btn btn-info pull-right" href="{!! URL::to('courses/'.$course->id.'/sections/create') !!}" >Add Sections</a>
     </h2>
@@ -18,7 +18,8 @@
             <td>Instructor</td>
             <td>Alias</td>
             <td>Capacity</td>
-            <td>Alias</td>
+            <td>Remaining</td>
+            <td>Actions</td>
         </tr>
     </thead>
     <tbody>
@@ -28,6 +29,8 @@
             <td>{!! $value->instructor !!}</td>
             <td>{!! $value->alias !!}</td>
             <td>{!! $value->capacity !!}</td>
+            <td>{!! $value->capacity - $value->filled !!}</td>
+
 
             <!-- we will also add show, edit, and delete buttons -->
             <td>

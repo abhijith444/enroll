@@ -86,7 +86,7 @@
 							</div>
 						</div>
 					</div>
-					You are logged in - {{ Auth::user()->student_id }}!
+					
 				</div>
 			</div>
 		</div>

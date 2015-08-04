@@ -1,8 +1,8 @@
-@extends('app')
+@extends('app-admin')
 
 @section('content')
-<div class="container">
-    <h1>Create a Nerd</h1>
+<div class="well container">
+    <h1>Create a Course</h1>
 
     <!-- if there are creation errors, they will show here -->
     {!! Html::ul($errors->all()) !!}
