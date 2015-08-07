@@ -54,9 +54,9 @@
 
             <div class="form-group">
                 {!! Form::label('days', 'Days') !!}
-                {!! Form::select('course_type', 
+                {!! Form::select('days', 
                     $days_array,
-                    Input::old('course_type'), 
+                    Input::old('days'), 
                     array('class' => 'form-control')) !!}
                 </div>
 

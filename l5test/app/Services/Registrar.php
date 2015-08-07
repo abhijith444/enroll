@@ -31,9 +31,10 @@ class Registrar implements RegistrarContract {
 	{
 		$user = User::where('student_id', '=', $data['student_id'])->first();
 		$user->update([
-			'name' => $data['name'],
+			'given_name' => $data['name'],
 			'email' => $data['email'],
 			'password' => bcrypt($data['password']),
+			'facebook_url' => $data['facebook_url'],
 		]);
 		
 		return $user;

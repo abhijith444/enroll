@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
-				<div class="panel-heading">Enrollment</div>
+				<div class="panel-heading">Please pick from the available courses</div>
 
 				<div class="panel-body" ng-show="loading">Please wait ...</div>
 				<div class="panel-body" ng-hide="loading">
@@ -15,6 +15,7 @@
 					<table class="table table-striped">
 						<thead>
 							<th>Course Code</th>
+							<th>CRN</th>
 							<th>Course Name</th>
 							<th>Instructor</th>
 							<th>Time</th>
@@ -22,6 +23,7 @@
 						</thead>
 						<tr ng-repeat="section in enrolled_sections">
 							<td>@{{section.course_code}}</td>
+							<td>@{{section.crn}}</td>
 							<td>@{{section.course_name}}</td>
 							<td>@{{section.instructor}}</td>
 							<td>@{{section.days}} @{{section.time}}</td>
@@ -31,10 +33,11 @@
 
 					</table>
 
-					<legend>Available</legend>
+					<legend>Available Sections</legend>
 					<table class="table table-striped">
 						<thead>
 							<th>Course Code</th>
+							<th>CRN</th>
 							<th>Course Name</th>
 							<th>Instructor</th>
 							<th>Time</th>
@@ -42,6 +45,7 @@
 						</thead>
 						<tr ng-repeat="section in available_sections">
 							<td>@{{section.course_code}}</td>
+							<td>@{{section.crn}}</td>
 							<td>@{{section.course_name}}</td>
 							<td>@{{section.instructor}}</td>
 							<td>@{{section.days}} @{{section.time}}</td>

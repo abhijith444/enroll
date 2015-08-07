@@ -43,6 +43,13 @@
 						</div>
 
 						<div class="form-group">
+							<label class="col-md-4 control-label">Facebook URL</label>
+							<div class="col-md-6">
+								<input type="url" class="form-control" placeholder="facebook.com/yourusername" name="facebook_url" value="{{ old('facebook_url') }}">
+							</div>
+						</div>
+
+						<div class="form-group">
 							<label class="col-md-4 control-label">Password</label>
 							<div class="col-md-6">
 								<input type="password" class="form-control" name="password">

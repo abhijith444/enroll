@@ -12,7 +12,7 @@ class EnrollmentController extends Controller {
 		$section_id = Request::input('id');
 		$user = Auth::user();
 		$enrollment_count = Enrollment::where('student_id', '=', $user->id)->count();
-		if($enrollment_count>=3)
+		if($enrollment_count>3)
 			return json_encode(array(
 				"status"=>"error",
 				"message"=>"You have already enrolled in maximum courses. Please contact the advisor"

@@ -25,7 +25,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'email', 'password'];
+	protected $fillable = ['name', 'email', 'password','given_name'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -56,6 +56,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 		$vsections_available=Vsection::whereIn('id',$sections_available_ids)
 										->whereNotIn('time_flag',$sections_enrolled_timeflags)
+										
 										->get()->toArray();
 		
 		// print_r($section_ids);

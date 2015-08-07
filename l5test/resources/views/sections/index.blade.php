@@ -41,7 +41,7 @@
                     {!! Form::submit('Delete this Section', array('class' => 'btn btn-danger')) !!}
                 {!! Form::close() !!}
 
-                <a class="btn btn-md btn-success" href="{!! URL::to('courses/'. $course->id.'/sections/' .$value->id) !!}">View Section</a>
+                <a class="btn btn-md btn-success" href="{!! URL::to('courses/'. $course->id.'/sections/' .$value->id) !!}">Enroll/Drop in Section</a>
 
                 <!-- edit this course (uses the edit method found at GET /courses/{id}/edit -->
                 <a class="btn btn-md btn-info" href="{!! URL::to('courses/'. $course->id.'/sections/' .$value->id.'/edit') !!}">Edit this Section</a>
