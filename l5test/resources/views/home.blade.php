@@ -9,8 +9,8 @@
 
 				<div class="panel-body" ng-show="loading">Please wait ...</div>
 				<div class="panel-body" ng-hide="loading">
-					<div class="alert alert-success" ng-show="hasMessage">@{{message}}</div>
-					<legend>Enrolled Section</legend>
+					<div class="alert alert-info" ng-show="hasMessage">@{{message}}</div>
+					<legend>Enrolled Sections</legend>
 					
 					<table class="table table-striped">
 						<thead>

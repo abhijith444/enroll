@@ -28,7 +28,7 @@ class TestController extends Controller {
 	if(Auth::attempt(['student_id' => $data['student_id'], 'password' => $data['password']]))
 		return Redirect::to('home');
 	else
-		echo "Failure";
+		return redirect()->back()->withErrors('Invalid Login or Password');
 	// Auth::loginUsingId(1);
 	
 	

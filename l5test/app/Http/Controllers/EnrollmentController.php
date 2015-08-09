@@ -17,6 +17,12 @@ class EnrollmentController extends Controller {
 				"status"=>"error",
 				"message"=>"You have already enrolled in maximum courses. Please contact the advisor"
 				));
+		$section = Section::find($section_id);
+		if($section->filled >= $section->capacity)
+			return json_encode(array(
+				"status"=>"error",
+				"message"=>"The section your requested is full. Please pick a diffrent section"
+				));
 
 		
 		$k = Enrollment::enroll($user->id,$section_id);

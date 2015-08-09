@@ -60,7 +60,17 @@
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="{{ url('/') }}">Home</a></li>
+						<li><a href="{{ url('/courses') }}">Courses</a></li>
+						<li><a href="{{ url('/students') }}">Manage Students</a></li>
+						<li><a href="{{ url('/sections') }}">View Sections</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reports <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="{{ url('/allroll?vt=crn') }}">Enrollments - CRNs</a></li>
+								<li><a href="{{ url('/allroll?vt=alias') }}">Enrollments - Alias</a></li>
+								<li><a href="{{ url('/allroll?vt=both') }}">Enrollments - Both</a></li>
+							</ul>
+						</li>
 					</ul>
 
 					<ul class="nav navbar-nav navbar-right">

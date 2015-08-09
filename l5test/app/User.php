@@ -25,7 +25,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'email', 'password','given_name'];
+	protected $fillable = ['student_id','name', 'email', 'password','given_name'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -33,6 +33,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 * @var array
 	 */
 	protected $hidden = ['password', 'remember_token'];
+
+	function getEnrollments(){
+		$enrollments = Enrollment::where('student_id', '=', $this->id)->get()->toArray();
+		return $enrollments;
+	}
 
 
 	function getAvailableSections(){
@@ -55,8 +60,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		$sections_available_ids = array_column($sections_available,'id');
 
 		$vsections_available=Vsection::whereIn('id',$sections_available_ids)
+										->whereRaw('filled < capacity')
 										->whereNotIn('time_flag',$sections_enrolled_timeflags)
-										
 										->get()->toArray();
 		
 		// print_r($section_ids);
@@ -73,6 +78,18 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $vsections_available;
 
 
+	}
+
+	public function reset(){
+		Enrollment::dropAll($this->student_id);
+		$this->email = "";
+		$this->password = "";
+		$this->email_ucm = "";
+		$this->given_name = "";
+		$this->facebook_url = "";
+		
+
+		$this->save();
 	}
 
 }
