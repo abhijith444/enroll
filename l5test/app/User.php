@@ -81,7 +81,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	}
 
 	public function reset(){
-		Enrollment::dropAll($this->student_id);
+		$this->dropAll();
 		$this->email = "";
 		$this->password = "";
 		$this->email_ucm = "";
@@ -98,6 +98,17 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 			return null;
 		else
 			return $user->first();
+	}
+
+	public function dropAll()
+	{
+		$enrollments=Enrollment::where('student_id','=',$this->id)->get();
+		
+		foreach($enrollments as $enrollment){
+			Enrollment::drop($this->id,$enrollment->section_id);
+		}
+
+		
 	}
 
 }

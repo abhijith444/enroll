@@ -71,16 +71,16 @@ class Enrollment extends Model {
 	}
 
 
-	public static function dropAll($uid)
-	{
-		$enrollments=Enrollment::where('student_id','=',$uid)->get();
+	// public static function dropAll($uid)
+	// {
+	// 	$enrollments=Enrollment::where('student_id','=',$uid)->get();
 		
-		foreach($enrollments as $enrollment){
-			drop($uid,$enrollment->section_id);
-		}
+	// 	foreach($enrollments as $enrollment){
+	// 		drop($uid,$enrollment->section_id);
+	// 	}
 
 		
-	}
+	// }
 	
 
 
