@@ -8,8 +8,8 @@
 				<div class="panel-heading">Register</div>
 				<div class="panel-body">
 					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
+						<div class="alert alert-info">
+							
 							<ul>
 								@foreach ($errors->all() as $error)
 									<li>{{ $error }}</li>
@@ -19,51 +19,49 @@
 					@endif
 
 					
-					{!! Form::model($user, array('route' => array('update-user'), 'method' => 'POST')) !!}
+					{!! Form::model($user, array('url' =>'/update-user', 'class'=>'form-horizontal', 'method' => 'POST')) !!}
         			{!! Form::hidden('id', $user->id) !!}
 						
 					
 						<div class="form-group">
 							<label class="col-md-4 control-label">Student ID</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control disabled" name="student_id" value="{{ old('student_id') }}">
+								{!! Form::text('student_id', Input::old('student_id'), array('class' => 'form-control','disabled')) !!}
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">Name</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="name" value="{{ old('name') }}">
+								{!! Form::text('name', Input::old('name'), array('class' => 'form-control')) !!}
+								
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">E-Mail Address</label>
 							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
+								{!! Form::text('email', Input::old('email'), array('class' => 'form-control')) !!}
+								
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">Facebook URL</label>
 							<div class="col-md-6">
-								<input type="url" class="form-control" placeholder="facebook.com/yourusername" name="facebook_url" value="{{ old('facebook_url') }}">
+								{!! Form::text('facebook_url', Input::old('facebook_url'), array('class' => 'form-control','placeholder'=>'facebook.com/yourusername')) !!}
+								
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">Password</label>
 							<div class="col-md-6">
-								<input type="password" class="form-control" name="password" placeholder="Must have 6 Characters">
+								<input type="password" required class="form-control" name="password" placeholder="Must have 6 Characters">
 							</div>
 						</div>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Confirm Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password_confirmation">
-							</div>
-						</div>
+						
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">

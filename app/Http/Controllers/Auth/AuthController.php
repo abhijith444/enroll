@@ -5,6 +5,8 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Auth;
+use Request;
+use Validator;
 
 class AuthController extends Controller {
 
@@ -20,6 +22,7 @@ class AuthController extends Controller {
 	*/
 
 	use AuthenticatesAndRegistersUsers;
+
 
 	/**
 	 * Create a new authentication controller instance.
@@ -44,14 +47,28 @@ class AuthController extends Controller {
 			return view('auth.login');
 	}
 
+	
 	public function showEditUser()
 	{
-		echo "string";
+		if(!Auth::check())
+			return view('auth.login');
+		
+		$user = Auth::user();
+		return view('auth.edit')->with('user',$user);
+
 			
 	}
 	public function updateUser()
 	{
 		//Take the data from auth-edit and push the update
+		$data=Request::all();
+		$data['password']=bcrypt($data['password']);
+
+		$user = Auth::user();
+
+		$user->update($data);
+
+		return redirect()->back()->withErrors("Update Successfull");
 
 			
 	}

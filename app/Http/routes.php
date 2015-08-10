@@ -57,8 +57,6 @@ Route::get('drop', 'EnrollmentController@drop');
 
 Route::post('tlogin', 'TestController@doLogin');
 
-Route::post('update-user','Auth\AuthController@updateUser');
-Route::get('edit-user','Auth\AuthController@aa');
 
 
 Route::controllers([
