@@ -92,4 +92,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		$this->save();
 	}
 
+	public static function findUserByStudentId($sid){
+		$user = User::where('student_id','=',$sid);
+		if($user->count()==0)
+			return null;
+		else
+			return $user->first();
+	}
+
 }

@@ -21,8 +21,8 @@
         ?>
         <!-- if there are creation errors, they will show here -->
         {!! Html::ul($errors->all()) !!}
-        {!! Form::model($section, array('route' => array('courses.sections.update', $section->id, $section->course_id,), 'method' => 'PUT')) !!}
-        
+        {!! Form::model($section, array('route' => array('courses.sections.update', $section->course_id, $section->id,), 'method' => 'PUT')) !!}
+        {!! Form::hidden('id', $section->id) !!}
         {!! Form::hidden('course_id',$section->course_id ) !!}
         <div class="form-group">
             {!! Form::label('crn', 'CRN') !!}
@@ -75,7 +75,7 @@
 
 
 
-                {!! Form::submit('Create Section', array('class' => 'btn btn-primary')) !!}
+                {!! Form::submit('Update Section', array('class' => 'btn btn-primary')) !!}
 
                 {!! Form::close() !!}
 

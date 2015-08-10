@@ -8,7 +8,7 @@
     {!! Html::ul($errors->all()) !!}
 
     {!! Form::model($course, array('route' => array('courses.update', $course->id), 'method' => 'PUT')) !!}
-
+    
     <div class="form-group">
         {!! Form::label('course_code', 'Course Code') !!}
         {!! Form::text('course_code', Input::old('course_code'), array('class' => 'form-control')) !!}

@@ -113,6 +113,7 @@ class SectionController extends Controller {
 			'time'=> 'required',
 			);
 		$input = $request->all();
+		// dd($input);
 		$validator = Validator::make($input, $rules);
 
         // process the login

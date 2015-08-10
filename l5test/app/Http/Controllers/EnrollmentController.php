@@ -59,6 +59,25 @@ class EnrollmentController extends Controller {
 		
 	}
 
+	public function mass_enroll()
+	{
+		$student_ids = explode(',',Request::input('student_ids'));
+		$sid = Request::input('id');
+
+		$messages = Enrollment::mass_enroll($student_ids,$sid);
+		return redirect()->back()->withErrors($messages);
+	}
+
+	public function mass_drop()
+	{
+		$student_ids = explode(',',Request::input('student_ids'));
+		$sid = Request::input('id');
+
+		$messages = Enrollment::mass_drop($student_ids,$sid);
+		return redirect()->back()->withErrors($messages);
+	}
+
+
 	public function getData()
 	{
 		$user = Auth::user();//User::find(1);

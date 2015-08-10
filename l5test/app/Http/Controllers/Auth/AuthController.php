@@ -42,6 +42,18 @@ class AuthController extends Controller {
 			return redirect('home');
 		else
 			return view('auth.login');
-	}	
+	}
+
+	public function showEditUser()
+	{
+		echo "string";
+			
+	}
+	public function updateUser()
+	{
+		//Take the data from auth-edit and push the update
+
+			
+	}
 
 }

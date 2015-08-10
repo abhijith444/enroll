@@ -8,6 +8,7 @@
         <legend>Mass Enroll</legend>
         {!! Form::open(array('url' => 'menroll')) !!}
         <div class="form-group">
+            {!! Form::hidden('id', $section->id) !!}
             {!! Form::label('student_ids', 'Enter the 700#s of students seperated commas') !!}
             {!! Form::text('student_ids', Input::old('student_ids'), array('class' => 'form-control')) !!}
             <button class="btn btn-info" type="submit">Mass Enroll</button>
@@ -17,6 +18,7 @@
         <legend>Mass Drop</legend>
         {!! Form::open(array('url' => 'mdrop')) !!}
         <div class="form-group">
+            {!! Form::hidden('id', $section->id) !!}
             {!! Form::label('student_ids', 'Enter the 700#s of students seperated commas') !!}
             {!! Form::text('student_ids', Input::old('student_ids'), array('class' => 'form-control')) !!}
             <button class="btn btn-danger" type="submit">Mass Drop</button>

@@ -21,7 +21,7 @@ class CreateSections extends Migration {
 			$table->string('days'); //core, track, substitute, prereq
 			$table->string('time');
 			$table->integer('time_code');
-			$table->string('alias');
+			$table->string('alias')->unique();
 			$table->string('location');
 			$table->integer('capacity');
 			$table->integer('filled')->default(0);

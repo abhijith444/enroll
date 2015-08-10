@@ -1,6 +1,7 @@
 <?php
 use App\Section;
 use App\Vsection;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,11 @@ use App\Vsection;
 */
 
 Route::get('/', 'Auth\AuthController@showLogin');
+
+Route::post('update-user','Auth\AuthController@updateUser');
+Route::get('edit-user','Auth\AuthController@showEditUser');
+
+
 Route::get('/ttt', 'TestController@index');
 
 
@@ -24,13 +30,15 @@ Route::get('home', ['middleware'=>'auth','uses'=>'HomeController@index']);
 
 
 Route::get('test', function(){
-	// sleep(3);
+	
+	dd(User::findUserByStudentId('700626229'));
 
-	$data = Section::All();//Section::All();
-	$success = "success";
+	// Mail::raw('Text to e-mail', function ($message) {
+	// 	$message->to("abhijth8@gmail.com", "Abhijth Garu")
+	// 	->subject('This is a test mail');
 
-	$response = array('success'=>$success,'sections'=>$data);
-	return $response;
+	// });
+
 });
 
 Route::get('test2', function(){
@@ -49,12 +57,15 @@ Route::get('drop', 'EnrollmentController@drop');
 
 Route::post('tlogin', 'TestController@doLogin');
 
+Route::post('update-user','Auth\AuthController@updateUser');
+Route::get('edit-user','Auth\AuthController@aa');
 
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 	]);
+
 
 
 Route::get('allroll', 'AdminController@showAllEnrollments');
@@ -64,3 +75,6 @@ Route::get('students','AdminController@showManageStudents');
 Route::get('sections','AdminController@showSections');
 Route::resource("courses","CourseController");
 Route::resource('courses.sections', 'SectionController');
+
+Route::post('menroll', 'EnrollmentController@mass_enroll');
+Route::post('mdrop', 'EnrollmentController@mass_drop');

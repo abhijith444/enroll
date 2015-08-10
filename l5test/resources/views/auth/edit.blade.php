@@ -18,13 +18,15 @@
 						</div>
 					@endif
 
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
+					
+					{!! Form::model($user, array('route' => array('update-user'), 'method' => 'POST')) !!}
+        			{!! Form::hidden('id', $user->id) !!}
+						
+					
 						<div class="form-group">
 							<label class="col-md-4 control-label">Student ID</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="student_id" value="{{ old('student_id') }}">
+								<input type="text" class="form-control disabled" name="student_id" value="{{ old('student_id') }}">
 							</div>
 						</div>
 
@@ -66,7 +68,7 @@
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">
-									Register
+									Update Profile
 								</button>
 							</div>
 						</div>

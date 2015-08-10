@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Enrollment extends Model {
 
 	protected $fillable = ['student_id','section_id'];
@@ -16,19 +17,25 @@ class Enrollment extends Model {
 		$section->filled = $section->filled+1;
 		$section->save();
 
-		return $enrollment;
+		
 	}
 
 	public static function mass_enroll($student_ids,$sid)
 	{
-		foreach($uid as $student_ids)
-			enroll($uid,$sid);
-	}
+		$messages=array();
+		foreach($student_ids as $student_id)
+		{
+			$user = User::findUserByStudentId($student_id);
+			if($user!=null){
+				Enrollment::enroll($user->id,$sid);
+				$messages[]=$student_id." enrolled successfully";
+			}
+			else
+				$messages[]=$student_id." does not exist";
+		}
 
-	public static function mass_drop($student_ids,$sid)
-	{
-		foreach($student_ids as $uid)
-			drop($uid,$sid);
+		return $messages;
+
 	}
 
 	
@@ -43,8 +50,26 @@ class Enrollment extends Model {
 		$section->filled = $section->filled-1;
 		$section->save();
 
-		return $sid;
+		return true;
 	}
+
+	public static function mass_drop($student_ids,$sid)
+	{
+		$messages=array();
+		foreach($student_ids as $student_id)
+		{
+			$user = User::findUserByStudentId($student_id);
+			if($user!=null){
+				Enrollment::drop($user->id,$sid);
+				$messages[]=$student_id." dropped successfully";
+			}
+			else
+				$messages[]=$student_id." does not exist";
+		}
+
+		return $messages;
+	}
+
 
 	public static function dropAll($uid)
 	{
