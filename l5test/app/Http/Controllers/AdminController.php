@@ -14,9 +14,9 @@ class AdminController extends Controller {
 		$section_id = Request::input('id');
 		$user = Auth::user();
 		$k = Enrollment::create([
-            'student_id' => $user->id,
-            'section_id' => $section_id,
-            ]);
+			'student_id' => $user->id,
+			'section_id' => $section_id,
+			]);
 		return $k;
 		
 	}
@@ -24,25 +24,25 @@ class AdminController extends Controller {
 	public function getAllEnrollments()
 	{
 		$enrollments = Enrollment::select('student_id', DB::raw('GROUP_CONCAT(section_id) AS section_ids'))
-           ->groupBy('student_id')->get()->toArray();
-        $user_array = array();
+		->groupBy('student_id')->get()->toArray();
+		$user_array = array();
 		// echo "<pre>";
 
 		// dd($enrollments);
-        foreach ($enrollments as $enrollment) {
-        	$user=User::find($enrollment['student_id']);
-        	$section_array=explode(",",$enrollment['section_ids']);
-        	foreach($section_array as $sid)
-        		$sections[] = Vsection::find($sid);
+		foreach ($enrollments as $enrollment) {
+			$user=User::find($enrollment['student_id']);
+			$section_array=explode(",",$enrollment['section_ids']);
+			foreach($section_array as $sid)
+				$sections[] = Vsection::find($sid);
 
-        	$user_array[] = array('user'=>$user,'sections'=>$sections);
-        	$sections=array();
-        }
+			$user_array[] = array('user'=>$user,'sections'=>$sections);
+			$sections=array();
+		}
 
         // return view('reports.allSections');
         // return view('reports.enrollments-regular')->with('users',$user_array);
         //dd($user_array);
-        return $user_array;
+		return $user_array;
         // foreach($user_array[1]['sections'] as $s)
         //        echo $s->crn."<br>";
         // dd($user_array);
@@ -57,19 +57,19 @@ class AdminController extends Controller {
 		
 		switch ($viewtype) {
 			case 'crn':
-				return view('reports.enrollments-crn')->with('users',$user_array);
-				break;
+			return view('reports.enrollments-crn')->with('users',$user_array);
+			break;
 			
 			case 'alias':
-				return view('reports.enrollments-alias')->with('users',$user_array);
-				break;
+			return view('reports.enrollments-alias')->with('users',$user_array);
+			break;
 
 			case 'both':
-				return view('reports.enrollments-both')->with('users',$user_array);
-				break;
+			return view('reports.enrollments-both')->with('users',$user_array);
+			break;
 			default:
-				echo "Default";
-				break;
+			echo "Default";
+			break;
 		}
 	}
 
@@ -98,21 +98,27 @@ class AdminController extends Controller {
 	}
 
 	public function addUser(){
-		$student = explode(',',Request::input('student'));
-		$student = array_map('trim',$student);
-		// $user = User::where('student_id','=',$uid)->get();
-		try{
+
+		$text = explode(';',Request::input('student'));
+		$text = array_map('trim',$text);
+		$text = array_filter($text);
+		// dd($text);
+		$messages = array();
+		foreach($text as $row)
+		{
+			$student = explode(',',$row);
+			$student = array_map('trim',$student);
 			$user = array(
 				'student_id'=>$student[0],
 				'name'=>$student[1],
 				);
-			 User::create($user);
+
+			$messages[] = User::create($user);
+			
+
 		}
-		catch(Exception $e){
-			return redirect()->back()->withErrors($e->getMessage());
-		}
-		// dd($user);
-		return redirect()->back()->withErrors('User added successfully');
+		// dd($messages);
+		return redirect()->back()->withErrors($messages);
 		
 		// if($user->count()!=0)
 		// 	return redirect()->back()->withErrors('Reset Successfull');

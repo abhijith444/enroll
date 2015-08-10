@@ -25,10 +25,10 @@
 
     <div class="row">
         <div class="col-xs-8">
-            {!! Form::text('student', Input::old('student'), array('class' => 'form-control','placeholder' => '700123456, John Doe')) !!}
+            {!! Form::textarea('student', Input::old('student'), array('class' => 'form-control','placeholder' => 'Hover for hint','rows'=>5, 'title'=>"700123456, John Doe;\n700789456, Jane Doe;\n...")) !!}
         </div>
         <div class="col-xs-2">
-            {!! Form::submit('Add Student', array('class' => 'btn btn-primary')) !!}
+            {!! Form::submit('Add Students', array('class' => 'btn btn-primary')) !!}
         </div>
     </div>
     {!! Form::close() !!}

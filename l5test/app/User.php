@@ -2,6 +2,7 @@
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Exception;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
@@ -33,6 +34,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 * @var array
 	 */
 	protected $hidden = ['password', 'remember_token'];
+
+	public static function create(array $data)
+    {
+        if(User::where('student_id', '=', $data['student_id'])->count() > 0)
+        	return ($data['student_id']." already exists");
+        parent::create($data);
+        return ($data['student_id']." added successfully");
+    }
 
 	function getEnrollments(){
 		$enrollments = Enrollment::where('student_id', '=', $this->id)->get()->toArray();
@@ -110,5 +119,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 		
 	}
+
+
 
 }
