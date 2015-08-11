@@ -72,6 +72,7 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li ><a href="{{ url('/edit-user') }}">Edit Profile</a></li>
+								<li ><a href="{{ url('/conf') }}">Send Email Confirmation</a></li>
 							</ul>
 						</li>
 						<li><a href="{{ url('/auth/logout') }}">Logout</a></li>

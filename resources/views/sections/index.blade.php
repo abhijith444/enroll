@@ -32,21 +32,22 @@
             <td>{!! $value->capacity - $value->filled !!}</td>
 
 
-            <!-- we will also add show, edit, and delete buttons -->
+            
             <td>
-
+            @if($value->filled===0)
                 <!-- delete the course (uses the destroy method DESTROY /courses/{id} -->
                 {!! Form::open(array('url' => 'courses/'.$value->course_id.'/sections/'.$value->id, 'class' => 'pull-right')) !!}
                     {!! Form::hidden('_method', 'DELETE') !!}
                     {!! Form::submit('Delete this Section', array('class' => 'btn btn-danger')) !!}
                 {!! Form::close() !!}
-
+            @endif
                 <a class="btn btn-md btn-success" href="{!! URL::to('courses/'. $course->id.'/sections/' .$value->id) !!}">Enroll/Drop in Section</a>
 
                 <!-- edit this course (uses the edit method found at GET /courses/{id}/edit -->
                 <a class="btn btn-md btn-info" href="{!! URL::to('courses/'. $course->id.'/sections/' .$value->id.'/edit') !!}">Edit this Section</a>
 
             </td>
+            
         </tr>
     @endforeach
     </tbody>

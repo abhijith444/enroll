@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 use Auth;
+use Mail;
 
 class HomeController extends Controller {
 
@@ -16,6 +17,14 @@ class HomeController extends Controller {
 	public function index()
 	{
 		return view('home');
+	}
+
+	public function sendConfirmation()
+	{
+		$user = Auth::user();
+		$user->sendEnrollmentConfirmation();
+		Auth::logout();
+		return redirect('/')->withErrors("Email confirmation sent.");
 	}
 
 }

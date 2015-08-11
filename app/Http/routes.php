@@ -3,6 +3,7 @@ use App\Section;
 use App\Vsection;
 use App\User;
 
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -27,7 +28,7 @@ Route::get('my', 'EnrollmentController@getData');
 Route::get('/ajdata', 'TestController@ajtest');
 
 Route::get('home', ['middleware'=>'auth','uses'=>'HomeController@index']);
-
+Route::get('conf', ['middleware'=>'auth','uses'=>'HomeController@sendConfirmation']);
 
 Route::get('test', function(){
 	

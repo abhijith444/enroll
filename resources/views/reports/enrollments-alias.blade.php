@@ -6,8 +6,8 @@
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
-            <th>CRN</th>
-            <th>Instructor</th>
+            <th>Student ID</th>
+            <th>Name</th>
             <th>Section 1</th>
             <th>Section 2</th>
             <th>Section 3</th>

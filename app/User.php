@@ -9,6 +9,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use App\Section;
 use App\Enrollment;
 use App\Vsection;
+use Mail;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
@@ -36,12 +37,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	protected $hidden = ['password', 'remember_token'];
 
 	public static function create(array $data)
-    {
-        if(User::where('student_id', '=', $data['student_id'])->count() > 0)
-        	return ($data['student_id']." already exists");
-        parent::create($data);
-        return ($data['student_id']." added successfully");
-    }
+	{
+		if(User::where('student_id', '=', $data['student_id'])->count() > 0)
+			return ($data['student_id']." already exists");
+		parent::create($data);
+		return ($data['student_id']." added successfully");
+	}
 
 	function getEnrollments(){
 		$enrollments = Enrollment::where('student_id', '=', $this->id)->get()->toArray();
@@ -69,9 +70,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		$sections_available_ids = array_column($sections_available,'id');
 
 		$vsections_available=Vsection::whereIn('id',$sections_available_ids)
-										->whereRaw('filled < capacity')
-										->whereNotIn('time_flag',$sections_enrolled_timeflags)
-										->get()->toArray();
+		->whereRaw('filled < capacity')
+		->whereNotIn('time_flag',$sections_enrolled_timeflags)
+		->get()->toArray();
 		
 		// print_r($section_ids);
 
@@ -99,6 +100,27 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		
 
 		$this->save();
+	}
+
+	public function getEnrolledSections()
+	{
+		$enrolled_sections=array();
+		$enrollments = Enrollment::where('student_id', '=', $this->id)->get();
+		foreach ($enrollments as $e) 
+			$enrolled_sections[] = Vsection::find($e->section_id);
+		
+		return $enrolled_sections;
+	}
+
+	public function sendEnrollmentConfirmation()
+	{
+		$sections = $this->getEnrolledSections();
+		Mail::send('emails.confirmation', ['sections' => $sections], function($message)
+		{
+			$message->to($this->email, $this->name)->subject('Enrollment Confirmation');
+		});
+
+		echo "Done";
 	}
 
 	public static function findUserByStudentId($sid){
