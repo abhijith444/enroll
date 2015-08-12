@@ -66,7 +66,7 @@
                 </div>
                 <div class="form-group">
                     {!! Form::label('location', 'Location') !!}
-                    {!! Form::text('location', Input::old('location'), array('class' => 'form-control','type'=>'number')) !!}
+                    {!! Form::text('location', Input::old('location'), array('class' => 'form-control')) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('description', 'Description') !!}
