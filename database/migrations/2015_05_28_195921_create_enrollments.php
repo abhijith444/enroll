@@ -17,6 +17,7 @@ class CreateEnrollments extends Migration {
 			$table->increments('id');
 			$table->integer('student_id');
 			$table->integer('section_id');
+			$table->unique(array('student_id','section_id'));
 			// $table->tinyInteger('dropped')->default(0);
 			// $table->string('semester');
 			$table->timestamps();
