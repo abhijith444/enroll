@@ -17,7 +17,7 @@
 							</ul>
 						</div>
 					@endif
-					<h2>The system will be live till Friday 1:00pm</h2>
+					<h2>Student login has been disabled for maintenance. Try after 8:00pm</h2>
 					<form class="form-horizontal" role="form" method="POST" action="{{ url('/tlogin') }}">
 						
 
