@@ -78,4 +78,4 @@ Route::resource('courses.sections', 'SectionController');
 
 Route::post('menroll', 'EnrollmentController@mass_enroll');
 Route::post('mdrop', 'EnrollmentController@mass_drop');
-Route::get('mydata', 'AdminController@getUserWithCourses');
+Route::get('coursereport', 'AdminController@getUsersWithCourses');

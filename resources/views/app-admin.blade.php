@@ -69,6 +69,7 @@
 								<li><a href="{{ url('/allroll?vt=crn') }}">Enrollments - CRNs</a></li>
 								<li><a href="{{ url('/allroll?vt=alias') }}">Enrollments - Alias</a></li>
 								<li><a href="{{ url('/allroll?vt=both') }}">Enrollments - Both</a></li>
+								<li><a href="{{ url('/coursereport') }}">Enrollments by Course</a></li>
 							</ul>
 						</li>
 					</ul>

@@ -128,7 +128,7 @@ class AdminController extends Controller {
 
 	}
 
-	public function getUserWithCourses()
+	public function getUsersWithCourses()
 	{
 		$dbusers = User::all();
 		$courses = Course::all(array('id','course_name','course_code'))->toArray();
