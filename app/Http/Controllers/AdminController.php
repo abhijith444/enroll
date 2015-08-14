@@ -74,7 +74,7 @@ class AdminController extends Controller {
 	}
 
 	public function showSections(){
-		$sections = Section::all();
+		$sections = Vsection::all();
 		
 		return view('reports.allSections')->with('sections',$sections);
 	}

@@ -17,7 +17,7 @@
 							</ul>
 						</div>
 					@endif
-					<h2>The system will be live till Friday 10:00am</h2>
+					<h2>The system will be live till Friday 1:00pm</h2>
 					<form class="form-horizontal" role="form" method="POST" action="{{ url('/tlogin') }}">
 						
 

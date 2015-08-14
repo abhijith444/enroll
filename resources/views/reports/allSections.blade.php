@@ -6,6 +6,7 @@
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
+            <th>Course Name</th>
             <th>CRN</th>
             <th>Instructor</th>
             <th>Alias</th>
@@ -18,6 +19,7 @@
     <tbody>
     @foreach($sections as $value)
         <tr>
+            <td>{!! $value->course_name !!}</td>
             <td>{!! $value->crn !!}</td>
             <td>{!! $value->instructor !!}</td>
             <td>{!! $value->alias !!}</td>
