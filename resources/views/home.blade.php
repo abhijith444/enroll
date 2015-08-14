@@ -28,7 +28,7 @@
 							<td>@{{section.instructor}}</td>
 							<td>@{{section.days}} @{{section.time}}</td>
 							<td>@{{section.location}}</td>
-							<td><a class="btn btn-sm btn-danger" ladda="loginLoading" ng-click="drop(section.id)" data-style="expand-right">Drop</a></td>
+							<!-- <td><a class="btn btn-sm btn-danger" ladda="loginLoading" ng-click="drop(section.id)" data-style="expand-right">Drop</a></td> -->
 						</tr>
 
 					</table>
@@ -50,7 +50,7 @@
 							<td>@{{section.instructor}}</td>
 							<td>@{{section.days}} @{{section.time}}</td>
 							<td>@{{section.location}}</td>
-							<td><a class="btn btn-sm btn-primary" ladda="loginLoading" ng-click="enroll(section.id)" data-style="expand-right">Enroll</a></td>
+							<!-- <td><a class="btn btn-sm btn-primary" ladda="loginLoading" ng-click="enroll(section.id)" data-style="expand-right">Enroll</a></td> -->
 						</tr>
 
 					</table>
@@ -80,7 +80,7 @@
 											<td>@{{section.created_at}}</td>
 											<td>@{{section.updated_at}}</td>
 											<td>@{{section.capacity}}</td>
-											<td><a class="btn btn-primary" ladda="loginLoading" ng-click="enroll(section.id)" data-style="expand-right">Enroll</a></td>
+											<!-- <td><a class="btn btn-primary" ladda="loginLoading" ng-click="enroll(section.id)" data-style="expand-right">Enroll</a></td> -->
 										</tr>
 
 									</table>

@@ -142,6 +142,19 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		
 	}
 
+	public function getCRNorNULL($course_id)
+	{
+		// $sections = Vsection::where('course_id','=',$course_id);
+		$enrolled_sections = $this->getEnrolledSections();
+		$crn = null;
+		foreach ($enrolled_sections as $section) {
+			if($section['course_id']===$course_id)
+				$crn = $section['crn'];
+		}
+
+		return $crn;
+	}
+
 
 
 }

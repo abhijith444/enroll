@@ -2,6 +2,7 @@
 use App\Section;
 use App\Enrollment;
 use App\User;
+use App\Course;
 use App\Vsection;
 use Auth;
 use Request;
@@ -124,6 +125,42 @@ class AdminController extends Controller {
 		// 	return redirect()->back()->withErrors('Reset Successfull');
 		// else
 		// 	return redirect()->back()->withErrors('Invalid Student ID');
+
+	}
+
+	public function getUserWithCourses()
+	{
+		$dbusers = User::all();
+		$courses = Course::all(array('id','course_name','course_code'))->toArray();
+		
+		$users=array();
+		foreach ($dbusers as $user) {
+			$user['count']=0;
+			foreach ($courses as $course) {
+				$ca[$course['course_code']]['id']=$course['id'];
+				$ca[$course['course_code']]['course_name']=$course['course_name'];
+				$ca[$course['course_code']]['course_code']=$course['course_code'];
+
+				$ca[$course['course_code']]['crn']=$user->getCRNorNULL($course['id']);
+				if($ca[$course['course_code']]['crn']!=null)
+					$user['count'] +=1;
+
+			}
+			$user = $user->toArray();
+			$user['courses']=$ca;
+		// dd($user);
+
+			$users[]=$user;
+
+		}
+
+
+		$courses[]=$ca;
+
+		$data['users']=$users;
+		$data['courses']=$ca;
+		
+		return view('reports.enrollments-users-with-courses')->with($data);
 
 	}
 

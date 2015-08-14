@@ -17,6 +17,7 @@ use App\User;
 
 Route::get('/', 'Auth\AuthController@showLogin');
 
+
 Route::post('update-user','Auth\AuthController@updateUser');
 Route::get('edit-user','Auth\AuthController@showEditUser');
 
@@ -77,3 +78,4 @@ Route::resource('courses.sections', 'SectionController');
 
 Route::post('menroll', 'EnrollmentController@mass_enroll');
 Route::post('mdrop', 'EnrollmentController@mass_drop');
+Route::get('mydata', 'AdminController@getUserWithCourses');
