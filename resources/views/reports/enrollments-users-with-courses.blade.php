@@ -8,6 +8,7 @@
         <tr>
             <th>Student ID</th>
             <th>Name</th>
+            <th>Email</th>
             <th>Count</th>
         @foreach($courses as $course)
             <th>CIS{{$course['course_code']}}</th>
@@ -19,10 +20,11 @@
         <tr>
             <td>{{ $user['student_id'] }}</td>
             <td>{{ $user['name'] }}</td>
+            <td>{{ $user['email'] }}</td>
             <td>{{ $user['count'] }}</td>
         @foreach($courses as $course)
             <td>{{$user['courses'][$course['course_code']]['crn']}}</td>
-        @endforeach  
+        @endforeach
         </tr>
     @endforeach
     </tbody>
