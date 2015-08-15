@@ -26,7 +26,7 @@ class TestController extends Controller {
 
 	$data = Input::All();
 
-	if(Auth::attempt(['student_id' => $data['student_id'], 'password' => $data['student_id']]))
+	if(Auth::attempt(['student_id' => $data['student_id'], 'password' => $data['password']]))
 	{
 		return Redirect::to('home');
 	}

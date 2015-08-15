@@ -17,21 +17,22 @@
 							</ul>
 						</div>
 					@endif
-					<h2>Student login has been disabled for maintenance. Try after 8:00pm</h2>
+					<h3>The system is in view-only mode</h3>
+					<h4>Students with the Pre-Req were dropped from 5606 and 5611</h4>
 					<form class="form-horizontal" role="form" method="POST" action="{{ url('/tlogin') }}">
 						
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">Student ID</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="student_id" value="{{ old('email') }}">
+								<input type="text" class="form-control" name="student_id" value="">
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">Password</label>
 							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
+								<input type="password" class="form-control" name="password" value="">
 							</div>
 						</div>
 

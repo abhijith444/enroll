@@ -17,6 +17,8 @@ class Enrollment extends Model {
 		$section->filled = $section->filled+1;
 		$section->save();
 
+		User::find($sid)->touch();
+
 		
 	}
 
